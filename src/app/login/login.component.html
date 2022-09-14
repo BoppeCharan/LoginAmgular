@@ -1,0 +1,40 @@
+<p>login works!</p>
+
+
+<form  [formGroup]="form" method="post">
+    <div class="imgcontainer">
+      <img src="/assets/imgs/img.png" alt="Avatar" class="avatar">
+    </div>
+  
+    <div class="container">
+        <label for="name"><b>Name</b></label>
+        <input type="text" formControlName="name" name="name" required>
+        <br>
+        <!-- <span *ngIf="form?.controls?.name?.errors?.required && form?.controls?.name?.touched">Please Enter Name</span> -->
+        <span *ngIf="form?.controls?.name?.errors?.pattern">Name contains invalid character</span>
+        <span>{{userNameError}}</span>
+  
+        <br>
+        <label for="password"><b>Password</b></label>
+        <input type="password" formControlName="password" name="password" required>
+        <span >{{passwordError}}</span>
+
+      <br>
+      <label for="type">Type</label>
+      <br>
+      <input type="radio" id="type" name="type" formControlName="type" value="seller">
+      <label for="postpaid">Seller</label>
+      <input type="radio" id="type" name="type" formControlName="type" value="buyer">
+      <label for="prepaid">Buyer</label>
+      <br>
+      <span *ngIf="form?.controls?.type?.invalid && form?.controls?.type?.touched">
+        Please check Type
+      </span>
+  
+      <button type="submit" (click) = "login()">Login</button>
+    </div>
+  
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn">Cancel</button>
+    </div>
+  </form>
